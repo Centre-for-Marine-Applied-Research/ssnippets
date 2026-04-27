@@ -30,3 +30,19 @@ wq_metrics_data <- read.socrata(
   email = odp_api_config$email,
   password = odp_api_config$password
 )
+
+
+# Speeding up API calls
+odp_api_config <- config::get(config = "default", file = "odp_api/config.yml")
+wq_metrics_url <- "https://data.novascotia.ca/api/v3/views/ktyz-sxuu/"
+base_speed <- microbenchmark::microbenchmark(
+  read.socrata(
+    wq_metrics_url,
+    app_token = odp_api_config$app_token,
+    email = odp_api_config$email,
+    password = odp_api_config$password
+  ),
+  times = 10
+)
+# Parallelized pagination?
+# Different format?
