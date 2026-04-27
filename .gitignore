@@ -51,5 +51,10 @@ rsconnect/
 *html
 *png
 
+# data files
+*csv
+*xlsx
+
 # Config files
 **/config.yml
+
