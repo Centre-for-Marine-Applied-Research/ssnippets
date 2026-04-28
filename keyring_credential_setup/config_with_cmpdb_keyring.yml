@@ -1,0 +1,14 @@
+# Database config example
+default:
+  user: !expr keyring::key_list(service = "cmpdb")[1,2]
+  password: !expr keyring::key_get(service = "cmpdb", username = keyring::key_list("cmpdb")[1, 2])
+  host: !expr keyring::key_get(service = "cmpdb", username = "ip")
+  port: !expr as.numeric(keyring::key_get(service = "cmpdb", username = "port"))
+  dbname: "cmp_dev"
+
+admin:
+  user: !expr keyring::key_list(service = "cmpdb")[1,2]
+  password: !expr keyring::key_get(service = "cmpdb", username = keyring::key_list("cmpdb")[1, 2])
+  host: !expr keyring::key_get(service = "cmpdb", username = "ip")
+  port: !expr as.numeric(keyring::key_get(service = "cmpdb", username = "port"))
+  dbname: "cmp_dev"

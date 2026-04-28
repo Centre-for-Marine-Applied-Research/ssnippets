@@ -1,0 +1,4 @@
+default:
+  email: !expr keyring::key_get(service = "odp-api", username = "email")
+  password: !expr keyring::key_get(service = "odp-api", username = "password")
+  app_token: !expr keyring::key_get(service = "cmpdb", username = "cmp-metrics-app-token")
